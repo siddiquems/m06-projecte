@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menus.component.css">
+    <title>Menu</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-center">
+        <ul class="nav">
+            <li class="nav-item">
+                <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a routerLink="/presentation" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Presentation</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/motivation" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Motivation</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/contact" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/books-list" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Manage books</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Login</a>
+            </li>
+
+            <li class="nav-item">
+                <a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Register</a>
+            </li>
+        </ul>
+    </nav>
+
+    <router-outlet></router-outlet>
+    
+</body>
+</html>

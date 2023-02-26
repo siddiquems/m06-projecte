@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="books-list.component.css">
+
+<div class="container">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h2 class="h2">Books List</h2>
+    </div>
+    <button class="btn btn-sm btn-primary" routerLink="/books-add">Add Book</button>
+    <p></p>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="theadd">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th class="text-center" scope="col">Action</th>
+            <th class="text-center" scope="col">Action</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of Books.data; let i = index">
+            <th scope="row">{{book.id}}</th>
+            <td>{{book.name}}</td>
+            <td>{{book.description}}</td>
+            <td>{{book.price}}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-primary" routerLink="/books-update/{{book.id}}">Edit</button>
+            </td>
+            <td class="text-center">
+                <button class="btn btn-sm btn-danger" (click)="delete(book.id, i)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+  

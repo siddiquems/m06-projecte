@@ -1,0 +1,10 @@
+table {
+    background-image: linear-gradient(to right, rgb(172, 194, 255) , rgb(255, 251, 193));
+    border: 1px solid rgba(0, 0, 0, 0.198);
+}
+
+.theadd {
+    background-color: rgba(0, 0, 0, 0.218);
+    /* color: white; */
+} 
+

@@ -1,0 +1,33 @@
+<!-- /**
+   * @file Shows the login form.
+   * @version 1.2
+   * @author Siddique Muhammad
+*/ -->
+
+<div *ngIf="!login" class="w-50 mx-auto">
+	<h1>Login Form</h1>
+	<form [formGroup]='loginForm' (ngSubmit)='submit()'>
+		<div class="form-group col-sm-6">
+			<label for="username" class='form-label mt-4'>Username:</label>
+			<input type="text" name="username" class='form-control' formControlName="username">
+			<span class="text-danger" *ngIf="this.loginForm.get('username')?.errors?.['required'] && this.loginForm.get('username')?.touched">
+				Campo obligatorio
+			</span>
+		</div>
+		<div class="form-group col-sm-6">
+			<label class="form-label mt-4" for="password">Password:</label>
+			<input class="form-control" type="password" name="password" formControlName="password">
+			<span class="text-danger" *ngIf="this.loginForm.get('password')?.errors?.['required'] && this.loginForm.get('password')?.touched">
+				Campo obligatorio
+			</span>
+		</div>
+		<hr>
+		<div class="form-group mt-4" id="btn">
+			<button type="submit" class="btn btn-primary">Log In</button>
+		</div>
+
+		<div class="">
+			<strong>{{data}}</strong>  
+		</div>
+	</form>
+</div>
