@@ -61,7 +61,7 @@ export class RegisterComponent {
       console.log(this.user);
 
       // Push user with the function getUsers
-    this.userService.getUsers(this.user)
+    // this.userService.getUsers(this.user)
 
     this.data="Usuari registrat correctament.";
   }

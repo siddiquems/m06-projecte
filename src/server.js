@@ -28,6 +28,46 @@ var dbConn = mysql.createConnection({
 // connect to database
 dbConn.connect(); 
 
+//comprovacio del login
+app.post('/login', function (req, res) {
+   
+    //recullo l'usuari
+    let username=req.body.username;
+    
+    //recullo la contrasenya
+    let password=req.body.password;
+    
+    //connexio
+    // dbConn.connect(function(err) {
+    //   if (err) {
+    //       console.error('Error connecting: ' + err.stack);
+    //       return;
+    //   }
+    //   console.log('Connected as id ' + connection.threadId);
+    // });
+    
+    // console.log(username);
+    // console.log(password);
+
+    // SQL Query
+    var sql = 'SELECT * FROM userss WHERE username=? and password=?';
+    dbConn.query(sql,[username, password],function(error, result){
+      if (error){
+        res.send('Username or password incorrect');
+      } else {
+        console.log("Login successful")
+        console.log(result[0]);
+        res.json(result[0]);
+      }
+    });
+})
+
+// Proves al login
+// {"username":"john",
+// "password":"pass2"
+// }
+
+
 // Retrieve all books 
 app.get('/books', function (req, res) {
     dbConn.query('SELECT * FROM books', function (error, results, fields) {

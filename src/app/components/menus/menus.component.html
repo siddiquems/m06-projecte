@@ -27,8 +27,12 @@
                 <a routerLink="/books-list" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Manage books</a>
             </li>
             <li class="nav-item">
-                <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Login</a>
+                <a *ngIf="!usuario" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Login</a>
             </li>
+            <li class="nav-item">
+                <a  *ngIf="usuario" (click)="logout()" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Logout</a>
+            </li>
+
 
             <li class="nav-item">
                 <a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Register</a>
