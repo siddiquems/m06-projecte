@@ -56,7 +56,9 @@ export class CrudServicesService {
   // Delete
   deleteBook(id:any): Observable<any> {
     let url_delete = `${this.url}/delete-book/${id}`;
-    return this.httpClient.delete(url_delete, { headers: this.httpHeaders}).pipe(
+    console.log(id)
+    return this.httpClient.delete(url_delete, { headers: this.httpHeaders})
+      .pipe(
         catchError(this.handleError)
       )
   }

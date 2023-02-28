@@ -21,18 +21,17 @@ export class UsersServicesService {
   public usuario:Observable<User>; 
 
   public usuariData():User{
+    // console.log(this.usuariSubject)
     return this.usuariSubject.value;
   }
 
   // Constructor
   constructor(private http: HttpClient) { 
-    this.usuariSubject= new BehaviorSubject<User>(JSON.parse(localStorage.getItem('usuari')!));//estat inicial del BehaviorSubject
-    this.usuario=this.usuariSubject.asObservable();
+    this.usuariSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')!));//estat inicial del BehaviorSubject
+    this.usuario =this.usuariSubject.asObservable();
    
-   }
+  }
 
-
-  
   validatingLogin(login: User):Observable<User>{
     return this.http.post<User>(this.url+"/login", login, {responseType: "json" }).pipe(
       map(res =>{
@@ -46,7 +45,7 @@ export class UsersServicesService {
           
           localStorage.setItem('user',JSON.stringify(res));
           // console.log("LocalStorage");
-          // console.log(localStorage.getItem('usuari'));
+          // console.log(localStorage.getItem('user'));
 
           this.usuariSubject.next(user);
         }
@@ -56,14 +55,16 @@ export class UsersServicesService {
     );
   }
 
-
-  
   logout(){
-    localStorage.removeItem('usuari');
+    localStorage.removeItem('user');
      
     this.usuariSubject.next(JSON.parse(null!));
   }
 
-  
+
+  registerUser(username:any, password:any):Observable<User>{
+
+    return this.http.post<User>(this.url+'/register',{'username':username, 'password':password},{responseType:'json'})
+  }
   
 }

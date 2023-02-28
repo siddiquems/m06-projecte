@@ -36,8 +36,9 @@
 
 
 
-<p>Usuaris: ruta /login al servidor</p>
-<div>
+<div  class="w-50 mx-auto">
+	<h1>Login Form</h1>
+  <div>
   <!--<form #loginForm="ngForm">
     <input type="text" id="username" name="username" [(ngModel)]="info.username" class="ng-untouched ng-pristine ng-valid"/>
     <br>
@@ -48,20 +49,22 @@
   </form>-->
   <!--Formularis reactius: https://www.tutorialesprogramacionya.com/angularya/detalleconcepto.php?punto=91&codigo=91&inicio=80 -->
   <form [formGroup]="loginForm" (ngSubmit)="testLogin()">
-    <input type="text" id="username" formControlName="username" />
+    <label>Username:</label>
+    <input class="form-control" type="text" id="username" formControlName="username" />
     <label *ngIf="loginForm.get('username')?.errors?.['required'] && loginForm.get('username')?.dirty" class = "error"> *El nom no pot estar buit. </label>
     <label *ngIf="loginForm.get('username')?.errors?.['minlength'] && loginForm.get('username')?.dirty" class = "error"> *Ha de cotenir com a mínim 3 caràcters. </label>
     <label *ngIf="loginForm.get('username')?.errors?.['maxlength'] && loginForm.get('username')?.dirty" class = "error"> *Ha de cotenir com a màxim 20 caràcters. </label>
   
     <br>
-    <input type="text" id="password" formControlName="password"/>
+    <label>Password:</label>
+    <input class="form-control" type="text" id="password" formControlName="password"/>
     <label *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.dirty" class = "error"> Password is invalid. </label>
     <br>
-    <button type ="submit" [disabled]="loginForm.invalid">Init session</button>
+    <button type ="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Iniciar session</button>
     <br>
   </form>
   <div *ngIf="message">
     Credencials incorrectes
   </div>
-   
+  </div>
 </div>

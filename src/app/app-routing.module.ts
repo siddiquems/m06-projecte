@@ -1,5 +1,14 @@
+/**
+   * @file App routing module. Manages all the routes
+   * @version 1.2
+   * @author Siddique Muhammad
+*/
+
+// Import angular modules
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+// Import components
 import { BooksAddComponent } from './components/books-add/books-add.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { BooksUpdateComponent } from './components/books-update/books-update.component';
@@ -10,6 +19,7 @@ import { MotivationComponent } from './components/motivation/motivation.componen
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PresentationComponent } from './components/presentation/presentation.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CheckLoginGuard } from './guards/check-login.guard';
 
 
 // Routes we have in the website
@@ -37,23 +47,28 @@ const routes: Routes = [
   },
   {
     path:'login',
-    component: LoginComponent 
+    component: LoginComponent,
   },
   {
     path:'register',
-    component: RegisterComponent 
+    component: RegisterComponent,
   },
   {
     path:'books-list',
-    component: BooksListComponent
+    component: BooksListComponent,
+    canActivate:[CheckLoginGuard]
   },
   {
     path:'books-add',
-    component: BooksAddComponent
+    component: BooksAddComponent,
+    canActivate:[CheckLoginGuard]
+
   },
   {
     path:'books-update/:id',
-    component: BooksUpdateComponent
+    component: BooksUpdateComponent,
+    canActivate:[CheckLoginGuard]
+
   },
   {
     path:'**',

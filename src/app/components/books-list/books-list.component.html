@@ -4,6 +4,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h2 class="h2">Books List</h2>
     </div>
+    <label> ¿You want to add a new book?  </label>
     <button class="btn btn-sm btn-primary" routerLink="/books-add">Add Book</button>
     <p></p>
     <div class="table-responsive">
@@ -29,7 +30,7 @@
               <button class="btn btn-sm btn-primary" routerLink="/books-update/{{book.id}}">Edit</button>
             </td>
             <td class="text-center">
-                <button class="btn btn-sm btn-danger" (click)="delete(book.id, i)">Delete</button>
+                <button class="btn btn-sm btn-danger" (click)="delete(book.id)">Delete</button>
             </td>
           </tr>
         </tbody>

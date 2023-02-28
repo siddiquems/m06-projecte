@@ -7,6 +7,7 @@
 // Imports
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { UsersServicesService } from 'src/app/services/users-services.service';
 
@@ -19,26 +20,17 @@ import { UsersServicesService } from 'src/app/services/users-services.service';
 
 // Class Register Component
 export class RegisterComponent {
-  constructor(private userService: UsersServicesService){
+  constructor(private userService: UsersServicesService, private router: Router){
   }
 
   user!:User;
   data:any;
 
-  // Create arrays of data
-  estado = ["Casat/da","Solter/a","Divorciat/da"]
-  interest = ["Videojuego","Accesoris","Novetats del mercat"]
 
   // Register Form
   registerForm = new FormGroup({
-    username:new FormControl('',[Validators.required, Validators.minLength(6), Validators.pattern('[A-Za-zñÑáéíóúÁÉÍÓÚ ]+')]),
+    username:new FormControl('',[Validators.required, Validators.minLength(4), Validators.pattern('[A-Za-zñÑáéíóúÁÉÍÓÚ ]+')]),
     password:new FormControl('',[Validators.required, Validators.minLength(8)]),
-    repeatPassword:new FormControl('',[Validators.required, Validators.minLength(8)]),
-    email:new FormControl('',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-    gender:new FormControl('',[Validators.required]),
-    status:new FormControl('',[Validators.required]),
-    interests:new FormControl(''),
-    conditions:new FormControl('',[Validators.required])
 
   });
 
@@ -49,20 +41,17 @@ export class RegisterComponent {
    * @author Siddique Muhamamd
   */    
   submit(){
-    this.user = new User(
-      this.registerForm.value.username, 
-      this.registerForm.value.password,
-      'comprador', 
-      this.registerForm.value.email, 
-      this.registerForm.value.gender, 
-      this.registerForm.value.status,
-      this.registerForm.value.interests,
-      this.registerForm.value.conditions);
-      console.log(this.user);
-
-      // Push user with the function getUsers
-    // this.userService.getUsers(this.user)
-
-    this.data="Usuari registrat correctament.";
+    this.userService.registerUser(this.registerForm.value.username, this.registerForm.value.password).subscribe(
+      result => {
+        if(result==null){
+          this.data='please, enter data';
+          console.log('register fail'); 
+        }else{
+          this.user=JSON.parse(JSON.stringify(result))
+          this.router.navigate(['/login']);
+          console.log('register ok'); 
+        }
+      }
+    )
   }
 }

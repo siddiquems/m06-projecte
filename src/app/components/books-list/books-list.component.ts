@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudServicesService } from 'src/app/services/crud-services.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books-list',
@@ -9,7 +10,7 @@ import { CrudServicesService } from 'src/app/services/crud-services.service';
 export class BooksListComponent implements OnInit {
 
   Books:any = [];
-  constructor(private crudeService: CrudServicesService) { }
+  constructor(private crudeService: CrudServicesService, private route: Router) { }
 
   ngOnInit(): void {
     this.crudeService.getBooks().subscribe(res => {
@@ -18,12 +19,18 @@ export class BooksListComponent implements OnInit {
     })
   }
 
-  delete(id: string, i:any) {
-    console.log(id, i);
+  delete(id: string) {
+    console.log(id);
     if(window.confirm('Do you want to go ahead?')) {
-      this.crudeService.deleteBook(id).subscribe(res => {
-        this.Books.splice(i, 1);
-      })
+      this.crudeService.deleteBook(id).subscribe(
+        res => {
+          console.log('ok')
+          // this.route.navigate(['/books-list']);
+          location.reload();
+
+          // this.Books.splice(i, 1);
+        }
+      )
     }
   }
 

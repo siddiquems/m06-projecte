@@ -1,6 +1,15 @@
+/**
+   * @file App module. Manages all the modules in the app
+   * @version 1.2
+   * @author Siddique Muhammad
+*/
+
+
+// Imports
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +29,8 @@ import { BooksAddComponent } from './components/books-add/books-add.component';
 import { BooksUpdateComponent } from './components/books-update/books-update.component';
 
 @NgModule({
+
+  // Declarations of the modules
   declarations: [
     AppComponent,
     ContactComponent,
@@ -35,13 +46,18 @@ import { BooksUpdateComponent } from './components/books-update/books-update.com
     BooksUpdateComponent,
 
   ],
+
+  // Import
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
   ],
+
+  // Providers
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

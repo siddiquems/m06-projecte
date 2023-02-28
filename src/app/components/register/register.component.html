@@ -27,58 +27,7 @@
             <span class="text-danger" *ngIf="this.registerForm.get('password')?.errors?.['minlength'] && this.registerForm.get('password')?.touched">
                 La longitud mínima son 8 caracteres.
             </span>
-        </p>
-        <p>Repeat Password
-            <input type="text" formControlName="repeatPassword"class="form-control">
-            <span class="text-danger" *ngIf="this.registerForm.get('repeatPassword')?.errors?.['required'] && this.registerForm.get('repeatPassword')?.touched">
-                El password no puede estar vacío.
-            </span>
-            <span class="text-danger" *ngIf="this.registerForm.get('repeatPassword')?.errors?.['minlength'] && this.registerForm.get('repeatPassword')?.touched">
-                La longitud mínima son 8 caracteres.
-            </span>
-            <span class="text-danger" *ngIf="this.registerForm.get('repeatPassword')?.errors?.['samePass'] && this.registerForm.get('repeatPassword')?.touched">
-                La contraseña no es la misma.
-            </span>
-        </p>
-        <p>Email
-            <input type="text" formControlName="email" class="form-control">
-            <span class="text-danger" *ngIf="this.registerForm.get('email')?.errors?.['required'] && this.registerForm.get('email')?.touched">
-                El email no puede estar vacío.
-            </span>
-            <span class="text-danger" *ngIf="this.registerForm.get('email')?.errors?.['pattern'] && this.registerForm.get('email')?.touched">
-                Formato de email no correcto.
-            </span>
-        </p>
-        <p>Gender:<br>
-            <input type="radio" name="gender" value="Home" formControlName="gender" >Home<br>
-            <input type="radio" name="gender" value="Dona" formControlName="gender">Dona<br>
-            <input type="radio" name="gender" value="Altres" formControlName="gender">Altres<br>
-            <span class="text-danger" *ngIf="this.registerForm.get('gender')?.errors?.['required'] && this.registerForm.get('gender')?.touched">
-                Campo obligatorio
-            </span>
-        </p>
-
-        <p>Estat civil:
-            <select formControlName="status" name="status" id="" class="form-control">
-                <option *ngFor="let a of estado" value="{{a}}" selected>{{a}}</option>
-            </select>
-            <span class="text-danger" *ngIf="this.registerForm.get('status')?.errors?.['required'] && this.registerForm.get('status')?.touched">
-                Campo obligatorio
-            </span>
-        </p>
-
-        <p>Interests:
-            <select formControlName="interests" name="interests" id="" class="form-control">
-                <option *ngFor="let a of interest" value="{{a}}" selected>{{a}}</option>
-            </select>
-        </p>
-
-        <p>Accept conditions:
-            <input type="checkbox" class="form-check-input" formControlName="conditions">
-            <span class="text-danger" *ngIf="this.registerForm.get('conditions')?.errors?.['required'] && this.registerForm.get('conditions')?.touched">
-                Tienes que aceptar las condiciones.
-            </span>
-        </p>    
+        </p>  
         
         <button class="btn btn-primary" [disabled]="registerForm.invalid" type="submit">Enviar</button>
 

@@ -23,6 +23,6 @@ export class MenusComponent {
 
   logout(){
     this.http.logout();
-    this.route.navigate(['/']);
+    this.route.navigate(['/login']);
   }
 }

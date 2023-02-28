@@ -24,13 +24,14 @@ export class BooksUpdateComponent implements OnInit {
     this.getId = this.activatedRoute.snapshot.paramMap.get('id');
     this.crudService.getBook(this.getId).subscribe(
       res => {
-        // this.dataArray = res as string[];
-        console.log(res);
+        this.dataArray = res as string[];
+        console.log(res['data']);
+        // console.log(this.getId)
 
         this.updateForm.patchValue({
-          name: res['name'],
-          description: res['description'],
-          price: res['price']
+          name: res['data']['name'],
+          description: res['data']['description'],
+          price: res['data']['price']
         });
 
       });
@@ -44,10 +45,13 @@ export class BooksUpdateComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
+  
+  
   onUpdate():any {
     this.crudService.updateBook(this.getId, this.updateForm.value).subscribe(
-      (results) => {
+      (res) => {
+        console.log(this.getId);
+        console.log(this.updateForm.value);
         console.log("Book updated successfully");
         this.ngZone.run(() => this.router.navigateByUrl('/books-list'));
       }
