@@ -1,3 +1,11 @@
+/**
+   * @file Auth incerceptor service. 
+   * @description Service that provides authentication interceptors
+   * @version 1.2
+   * @author Siddique Muhammad
+*/
+
+// Imports
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -9,6 +17,7 @@ import { Router } from '@angular/router';
 })
 export class AuthInterceptorService implements HttpInterceptor {
 
+  // Constructor
   constructor(
     private router: Router
   ) {}

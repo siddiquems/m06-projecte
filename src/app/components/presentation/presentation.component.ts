@@ -1,3 +1,9 @@
+/**
+   * @file Presentation page component
+   * @version 1.2
+   * @author Siddique Muhammad
+*/
+
 import { Component } from '@angular/core';
 
 @Component({

@@ -1,25 +1,55 @@
-<div class="row justify-content-center mt-5">
+<!-- Add Book Page -->
+
+<div class="mx-auto mt-5" style="width: 200px;"><h1>Books Add</h1></div>
+
+<div class="row justify-content-center mt-2">
     <div class="col-md-4">
         <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
+            <p>
+              <label>Name</label>
+              <input class="form-control" type="text" formControlName="name" required>
+              <span class="text-danger" *ngIf="this.bookForm.get('name')?.errors?.['required'] && this.bookForm.get('name')?.touched">
+                El nombre no puede estar vacío.
+              </span>
+              <span class="text-danger" *ngIf="this.bookForm.get('name')?.errors?.['minlength'] && this.bookForm.get('name')?.touched">
+                La longitud minima son 2 caracter
+              </span>
+            </p>
+          </div>
+  
+          <div class="form-group">
+            <p>
+              <label>Description</label>
+              <input class="form-control" type="text" formControlName="description" required>
+              <span class="text-danger" *ngIf="this.bookForm.get('description')?.errors?.['required'] && this.bookForm.get('description')?.touched">
+                La description no puede estar vacío.
+              </span>
+              <span class="text-danger" *ngIf="this.bookForm.get('description')?.errors?.['minlength'] && this.bookForm.get('description')?.touched">
+                La longitud minima son 5 caracter
+              </span>
+            </p>
+          </div>
 
-            <label>Name</label>
-            <input class="form-control" type="text" formControlName="name" required>
+          <div class="form-group">
+            <p>
+              <label>Price</label>
+              <input class="form-control" type="text" formControlName="price" required>
+              <span class="text-danger" *ngIf="this.bookForm.get('price')?.errors?.['required'] && this.bookForm.get('price')?.touched">
+                EL precio no puede estar vacío.
+              </span>
+              <span class="text-danger" *ngIf="this.bookForm.get('price')?.errors?.['minlength'] && this.bookForm.get('price')?.touched">
+                La longitud minima son 1 caracter
+              </span>
+              <span class="text-danger" *ngIf="this.bookForm.get('price')?.errors?.['pattern'] && this.bookForm.get('price')?.touched">
+                Solo se permiten numeros
+              </span>
+            </p>
           </div>
   
-          <div class="form-group">
-            <label>Description</label>
-            <input class="form-control" type="text" formControlName="description" required>
-          </div>
-
-          <div class="form-group">
-            <label>Price</label>
-            <input class="form-control" type="text" formControlName="price" required>
-          </div>
-  
   
           <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit">Add Book</button>
+            <button class="btn btn-primary btn-block" [disabled]="bookForm.invalid" type="submit">Add Book</button>
           </div>
 
           <div class="form-group">

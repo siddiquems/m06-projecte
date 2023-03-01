@@ -1,4 +1,9 @@
-<div class="row justify-content-center mt-5">
+<!-- Books Update page -->
+
+<div class="mx-auto mt-5" style="width: 200px;"><h1>Books Edit</h1></div>
+
+
+<div class="row justify-content-center mt-2">
     <div class="col-md-4">
 
       <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
@@ -6,20 +11,43 @@
         <div class="form-group">
           <label>Name</label>
           <input class="form-control" type="text" formControlName="name" required>
+          <span class="text-danger" *ngIf="this.updateForm.get('name')?.errors?.['required'] && this.updateForm.get('name')?.touched">
+            El nombre no puede estar vacío.
+          </span>
+          <span class="text-danger" *ngIf="this.updateForm.get('name')?.errors?.['minlength'] && this.updateForm.get('name')?.touched">
+            La longitud minima son 2 caracter
+          </span>
         </div>
 
         <div class="form-group">
           <label>Description</label>
           <input class="form-control" type="text" formControlName="description" required>
+          <span class="text-danger" *ngIf="this.updateForm.get('description')?.errors?.['required'] && this.updateForm.get('description')?.touched">
+            La description no puede estar vacío.
+          </span>
+          <span class="text-danger" *ngIf="this.updateForm.get('description')?.errors?.['minlength'] && this.updateForm.get('description')?.touched">
+            La longitud minima son 5 caracter
+          </span>
+          
         </div>
 
         <div class="form-group">
             <label>Price</label>
             <input class="form-control" type="text" formControlName="price" required>
+            <span class="text-danger" *ngIf="this.updateForm.get('price')?.errors?.['required'] && this.updateForm.get('price')?.touched">
+              EL precio no puede estar vacío.
+            </span>
+            <span class="text-danger" *ngIf="this.updateForm.get('price')?.errors?.['minlength'] && this.updateForm.get('price')?.touched">
+              La longitud minima son 1 caracter
+            </span>
+            <span class="text-danger" *ngIf="this.updateForm.get('price')?.errors?.['pattern'] && this.updateForm.get('price')?.touched">
+              Solo se permiten numeros
+            </span>
         </div>
+        <br>
 
         <div class="form-group">
-          <button class="btn btn-primary btn-block" type="submit">Update</button>
+          <button class="btn btn-primary btn-block" [disabled]="updateForm.invalid" type="submit">Update</button>
         </div>
         
       </form>

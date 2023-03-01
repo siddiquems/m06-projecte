@@ -1,3 +1,10 @@
+/**
+   * @file Page not found component
+   * @description in case of error in the page url
+   * @version 1.2
+   * @author Siddique Muhammad
+*/
+
 import { Component } from '@angular/core';
 
 @Component({

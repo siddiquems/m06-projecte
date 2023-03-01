@@ -9,57 +9,59 @@
 export class User {
 
     // Properties
-    username: any;
-    password: any;
-    role:any;
-    email: any;
-    status:any;
-    gender:any;
-    interests: any;
-    conditions:any;
+    #username: string;
+    #password: string;
+    #role:string;
+    #name:string;
+    #age:any;
 
     // Constructor
-    constructor(username: any, password: any, role:any, email: any, status:any, gender:any, interests: any, conditions:any) {
-            this.username = username;
-            this.password = password;
-            this.role = role;
-            this.email = email;
-            this.status = status;
-            this.gender = gender;
-            this.interests = interests;
-            this.conditions = conditions;
+    constructor(username: string, password: string, role:string, name:string, age:any) {
+            this.#username = username;
+            this.#password = password;
+            this.#name = name;
+            this.#role = role;   
+            this.#age = age;
     }
 
     // Methods
-    public getName():any {
-        return this.username;
+    public getUsername():string {
+        return this.#username;
     }
 
-    public getPassword():any {
-        return this.password;
+    public getPassword():string {
+        return this.#password;
     }
 
-    public getRole():any {
-        return this.role;
+    public getRole():string {
+        return this.#role;
     }
 
-    public getEmail():any {
-        return this.email;
+    public getName():string {
+        return this.#name;
     }
 
-    public getStatus():any {
-        return this.status;
+    public getAge():any {
+        return this.#age;
     }
 
-    public getGender():any {
-        return this.gender;
+    public setUsername(username:string){
+        this.#username = username;
     }
 
-    public getInterests():any{
-        return this.interests;
+    public setPassword(password:string){
+        this.#password = password;
     }
 
-    public getConditions():any{
-        return this.conditions;
+    public setRole(role:string) {
+        this.#role = role;
+    }
+
+    public setName(name:string) {
+        this.#name = name;
+    }
+
+    public setAge(age:any) {
+        this.#age = age;
     }
 }

@@ -4,6 +4,7 @@
    * @author Siddique Muhammad
 */
 
+// Imports
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -13,9 +14,16 @@ import { UsersServicesService } from '../services/users-services.service';
   providedIn: 'root'
 })
 
-// More information
+// More information about guards
 //https://codingpotions.com/angular-seguridad
+
+// To create a guard: ng g guard guards/nom_guard --implements CanActivate
+
+
+// Class CheckLoginGuard implements CanActivate
 export class CheckLoginGuard implements CanActivate {
+
+  // Constructor
   constructor(private route:Router, private http: UsersServicesService){
 
   }
@@ -23,10 +31,10 @@ export class CheckLoginGuard implements CanActivate {
   // Can Activate method
   /**
    * @description Activate the guard 
+   * @param route
    * @version 1.2
    * @author Siddique Muhammad
   */
-
   canActivate(route: ActivatedRouteSnapshot) {
     const usuario=this.http.usuariData();
     //console.log("erererer",usuario);

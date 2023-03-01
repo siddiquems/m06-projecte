@@ -13,7 +13,7 @@
             El nombre no puede estar vacío.
             </span>
             <span class="text-danger" *ngIf="this.registerForm.get('username')?.errors?.['minlength'] && this.registerForm.get('username')?.touched">
-            La longitud mínima son 6 caracteres.
+            La longitud mínima son 4 caracteres.
             </span>
             <span class="text-danger" *ngIf="this.registerForm.get('username')?.errors?.['pattern'] && this.registerForm.get('username')?.touched">
                 El formato de este campo no es correcto.
@@ -25,9 +25,30 @@
             El password no puede estar vacío.
             </span>
             <span class="text-danger" *ngIf="this.registerForm.get('password')?.errors?.['minlength'] && this.registerForm.get('password')?.touched">
-                La longitud mínima son 8 caracteres.
+                La longitud mínima son 5 caracteres.
             </span>
         </p>  
+        <p>
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="name">
+            <span class="text-danger"
+                *ngIf="this.registerForm.get('name')?.errors?.['required'] && this.registerForm.get('name')?.touched">
+                El nombre no puede estar vacío.
+            </span>
+            <span class="text-danger" *ngIf="this.registerForm.get('name')?.errors?.['minlength'] && this.registerForm.get('name')?.touched">
+                La longitud mínima son 2 caracteres.
+            </span>
+        </p>
+        <p>
+            <label>Age</label>
+            <input type="number" class="form-control" formControlName="age">
+            <span class="text-danger" *ngIf="this.registerForm.get('age')?.errors?.['required'] && this.registerForm.get('age')?.touched">
+                La edad no puede estar vacío.
+            </span>
+            <span class="text-danger" *ngIf="this.registerForm.get('age')?.errors?.['minlength'] && this.registerForm.get('age')?.touched">
+                The minimum longitud is 1
+            </span>
+        </p>
         
         <button class="btn btn-primary" [disabled]="registerForm.invalid" type="submit">Enviar</button>
 

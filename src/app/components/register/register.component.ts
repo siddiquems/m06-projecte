@@ -29,8 +29,11 @@ export class RegisterComponent {
 
   // Register Form
   registerForm = new FormGroup({
-    username:new FormControl('',[Validators.required, Validators.minLength(4), Validators.pattern('[A-Za-zñÑáéíóúÁÉÍÓÚ ]+')]),
-    password:new FormControl('',[Validators.required, Validators.minLength(8)]),
+    username:new FormControl('',[Validators.required, Validators.minLength(4), Validators.pattern('[A-Za-zñÑáéíóúÁÉÍÓÚ0-9]+')]),
+    password:new FormControl('',[Validators.required, Validators.minLength(5)]),
+    name:new FormControl('',[Validators.required, Validators.minLength(2)]),
+    age:new FormControl('',[Validators.required, Validators.minLength(1)]),
+
 
   });
 
@@ -41,7 +44,7 @@ export class RegisterComponent {
    * @author Siddique Muhamamd
   */    
   submit(){
-    this.userService.registerUser(this.registerForm.value.username, this.registerForm.value.password).subscribe(
+    this.userService.registerUser(this.registerForm.value.username, this.registerForm.value.password,'staff', this.registerForm.value.name,this.registerForm.value.age).subscribe(
       result => {
         if(result==null){
           this.data='please, enter data';

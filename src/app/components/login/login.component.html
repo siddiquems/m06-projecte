@@ -3,68 +3,31 @@
    * @version 1.2
    * @author Siddique Muhammad
 */ -->
-<!-- 
-<div *ngIf="!login" class="w-50 mx-auto">
-	<h1>Login Form</h1>
-	<form [formGroup]='loginForm' (ngSubmit)='submit()'>
-		<div class="form-group col-sm-6">
-			<label for="username" class='form-label mt-4'>Username:</label>
-			<input type="text" name="username" class='form-control' formControlName="username">
-			<span class="text-danger" *ngIf="this.loginForm.get('username')?.errors?.['required'] && this.loginForm.get('username')?.touched">
-				Campo obligatorio
-			</span>
-		</div>
-		<div class="form-group col-sm-6">
-			<label class="form-label mt-4" for="password">Password:</label>
-			<input class="form-control" type="password" name="password" formControlName="password">
-			<span class="text-danger" *ngIf="this.loginForm.get('password')?.errors?.['required'] && this.loginForm.get('password')?.touched">
-				Campo obligatorio
-			</span>
-		</div>
-		<hr>
-		<div class="form-group mt-4" id="btn">
-			<button type="submit" class="btn btn-primary">Log In</button>
-		</div>
-
-		<div class="">
-			<strong>{{data}}</strong>  
-		</div>
-	</form>
-</div> -->
-
-
-
-
 
 <div  class="w-50 mx-auto">
 	<h1>Login Form</h1>
   <div>
-  <!--<form #loginForm="ngForm">
-    <input type="text" id="username" name="username" [(ngModel)]="info.username" class="ng-untouched ng-pristine ng-valid"/>
-    <br>
-    <input type="text"id="userpass" name="userpass"  [(ngModel)]="info.password" class="ng-untouched ng-pristine ng-valid"/>
-    <br>
-    <button [disabled]="loginForm.invalid" (click)="testLogin()">Validate</button>
-    <br>
-  </form>-->
   <!--Formularis reactius: https://www.tutorialesprogramacionya.com/angularya/detalleconcepto.php?punto=91&codigo=91&inicio=80 -->
-  <form [formGroup]="loginForm" (ngSubmit)="testLogin()">
-    <label>Username:</label>
-    <input class="form-control" type="text" id="username" formControlName="username" />
-    <label *ngIf="loginForm.get('username')?.errors?.['required'] && loginForm.get('username')?.dirty" class = "error"> *El nom no pot estar buit. </label>
-    <label *ngIf="loginForm.get('username')?.errors?.['minlength'] && loginForm.get('username')?.dirty" class = "error"> *Ha de cotenir com a mínim 3 caràcters. </label>
-    <label *ngIf="loginForm.get('username')?.errors?.['maxlength'] && loginForm.get('username')?.dirty" class = "error"> *Ha de cotenir com a màxim 20 caràcters. </label>
-  
-    <br>
-    <label>Password:</label>
-    <input class="form-control" type="text" id="password" formControlName="password"/>
-    <label *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.dirty" class = "error"> Password is invalid. </label>
-    <br>
-    <button type ="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Iniciar session</button>
-    <br>
-  </form>
-  <div *ngIf="message">
-    Credencials incorrectes
-  </div>
+    <form [formGroup]="loginForm" (ngSubmit)="testLogin()">
+      <label>Username:</label>
+      <input class="form-control" type="text" id="username" formControlName="username" />
+      <label *ngIf="loginForm.get('username')?.errors?.['required'] && loginForm.get('username')?.dirty" class = "error"> *El nom no pot estar buit. </label>
+      <label *ngIf="loginForm.get('username')?.errors?.['minlength'] && loginForm.get('username')?.dirty" class = "error"> *Ha de cotenir com a mínim 4 caràcters. </label>
+      <label *ngIf="loginForm.get('username')?.errors?.['maxlength'] && loginForm.get('username')?.dirty" class = "error"> *Ha de cotenir com a màxim 20 caràcters. </label>
+    
+      <br>
+      <label>Password:</label>
+      <input class="form-control" type="text" id="password" formControlName="password"/>
+      <label *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.dirty" class = "text-danger"> Password is invalid. </label><br>
+      <label *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.dirty" class = "error"> *El nom no pot estar buit. </label>
+      <label *ngIf="loginForm.get('password')?.errors?.['minlength'] && loginForm.get('password')?.dirty" class = "error"> *Ha de cotenir com a mínim 5 caràcters. </label>
+
+      <br>
+      <button type ="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Iniciar session</button>
+      <br>
+    </form>
+    <div *ngIf="message">
+      Credencials incorrectes
+    </div>
   </div>
 </div>

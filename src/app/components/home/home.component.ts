@@ -1,3 +1,9 @@
+/**
+   * @file home component. Ts file
+   * @author Siddique Muhammad
+   * @version 1.2
+   */
+
 import { Component } from '@angular/core';
 
 @Component({
